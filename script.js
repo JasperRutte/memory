@@ -1,4 +1,8 @@
-animals = ["lion", "lobster", "seagull", "skunk", "turtle", "bear", "deer", "frog", "horse"];
+let animals = ["lion", "lobster", "seagull", "skunk", "turtle", "bear", "deer", "frog", "horse"];
+randomAnimals1 = shuffle([...animals]);
+randomAnimals2 = shuffle([...animals]);
+
+twoCards = [];
 
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -16,19 +20,42 @@ function shuffle(array) {
 }
 
 function turnAround(button){
-    button.style.backgroundImage = "url(./images/lion.jpg)"
+    let animal = button.id.replace(/.$/,"")
+    button.style.backgroundImage = "url(images/" +animal+".jpg)";
 }
 
-// for (let animal in animals){
-//
-//         document.getElementById("row1").innerHTML=animals[animal];
-// }
+function sameCards (attribute) {
+    twoCards.push(attribute.id)
+    console.log(twoCards[0])
+    console.log(twoCards[1])
+    document.getElementById(twoCards[0]).disabled = true;
+    if (twoCards.length > 1){
+        if (twoCards[0] !== twoCards[1]){
+            setTimeout(=>doc, 2000)
+            twoCards = [];
 
+        }
+    }
+}
+
+function turnCardsBack(attribute){
+    document.getElementById(twoCards[0]).style.backgroundImage = "url()";
+    document.getElementById(twoCards[1]).style.backgroundImage = "url()";
+}
+
+
+for (let num = 0; num < animals.length-1; num++){
+    let button = document.createElement("button");
+    button.setAttribute("onClick", "turnAround(this);sameCards(this)")
+    // button.setAttribute("onClick", "sameCards(this)")
+    button.setAttribute("id", randomAnimals1[num]+String(1))
+    row1.appendChild(button);
+}
 
 for (let num = 1; num < animals.length; num++){
-    let button = document.createElement("button")
-    // button.setAttribute("onClick", "turnAround(this)")
-    // button.setAttribute("id", animals[num])
-    row1.appendChild(button)
-    console.log(num)
+    let button = document.createElement("button");
+    button.setAttribute("onClick", "turnAround(this)")
+    button.setAttribute("onClick", "sameCards(this)")
+    button.setAttribute("id", randomAnimals1[num]+String(2))
+    row2.appendChild(button);
 }

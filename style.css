@@ -1,5 +1,11 @@
 * button {
-    width: 12%;
+    width: 11.5%;
     height: 150px;
-    margin: auto 3px auto 3px;
+    margin: 5px;
+    background-size: cover;
+    background-color:white;
+}
+
+.row1 {
+    padding-bottom: 100px;
 }
