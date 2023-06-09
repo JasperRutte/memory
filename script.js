@@ -38,15 +38,21 @@ function sameCards (attribute) {
             twoCards = []
             return
         }
-        setTimeout(turnCardsBack,1000, twoCards)
+        setTimeout(turnCardsBack,1000, 'test')
+        document.getElementById(twoCards[0]).style.backgroundImage = "url()";
+        document.getElementById(twoCards[1]).style.backgroundImage = "url()";
         document.getElementById(twoCards[0]).disabled = false
         document.getElementById(twoCards[1]).disabled = false
         twoCards = []
     }
+}
+
+function turnCardsBack(test){
+    console.log(test)
     let j = 0
     let disabledButtons = document.getElementsByTagName("button");
     for (let i = 0; i < disabledButtons.length; i++){
-        if (disabledButtons[i].disabled === true){
+        if (disabledButtons[i].disabled === false){
             break
         } else {
             j++
@@ -55,12 +61,6 @@ function sameCards (attribute) {
             }
         }
     }
-
-}
-
-function turnCardsBack(twoCards){
-    document.getElementById(twoCards[0]).style.backgroundImage = "url()";
-    document.getElementById(twoCards[1]).style.backgroundImage = "url()";
 }
 
 
